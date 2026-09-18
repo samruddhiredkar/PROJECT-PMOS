@@ -1,0 +1,1429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>🌸 Project PMOS — Women's Holistic Daily Wellness</title>
+  <meta name="description" content="An all-in-one wellness platform helping women manage daily exercise, yoga, Indian nutrition, skin care, hair care, mood support, period tracking, and progress." />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              50: '#FDF8F7',
+              100: '#FCEEE9',
+              200: '#F7D6D0',
+              300: '#EFAEB0',
+              400: '#E88B8C',
+              500: '#DC6868',
+              600: '#C34B4B',
+            },
+            blush: {
+              light: '#FFF8F6',
+              DEFAULT: '#FCEEE9',
+              dark: '#F7D6D0',
+            },
+            lavender: {
+              50: '#FAF8FC',
+              100: '#F3EEF9',
+              200: '#E5DAF1',
+              500: '#8E7DBE',
+              700: '#645396',
+            },
+            mauve: {
+              100: '#F4EFF2',
+              300: '#D5C4CF',
+              500: '#9B788F',
+              800: '#4E3544',
+            },
+            peach: {
+              50: '#FFF7F4',
+              100: '#FFF0EB',
+              200: '#FFE2D8',
+              300: '#FFCCA8',
+              500: '#F28B72',
+              600: '#E07058',
+              700: '#C85740',
+            },
+            cream: {
+              50: '#FCFAF7',
+              100: '#F8F5F0',
+              200: '#EFEAE1',
+              300: '#E4DDD0',
+            },
+            charcoal: {
+              900: '#1E1B24',
+              800: '#2D2833',
+              700: '#4A4453',
+              600: '#6E6678',
+              500: '#867E90',
+              400: '#9E97A6',
+              200: '#DDD8E2',
+              100: '#EFEBF2',
+            },
+            sage: {
+              50: '#F4F9F5',
+              100: '#EDF5F0',
+              200: '#D5E9DC',
+              500: '#529668',
+              600: '#417A54',
+            }
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            serif: ['"Playfair Display"', 'Georgia', 'serif'],
+          },
+          boxShadow: {
+            'soft': '0 4px 20px -2px rgba(242, 139, 114, 0.08), 0 2px 6px -1px rgba(45, 40, 51, 0.04)',
+            'card': '0 10px 30px -4px rgba(45, 40, 51, 0.04), 0 2px 8px -2px rgba(45, 40, 51, 0.02)',
+            'hover': '0 20px 35px -6px rgba(242, 139, 114, 0.12), 0 8px 16px -4px rgba(45, 40, 51, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="bg-[#FAF8F5] text-charcoal-800 antialiased min-h-screen flex flex-col selection:bg-peach-100 selection:text-peach-700">
+
+  <!-- Mobile Top Header Bar -->
+  <header class="md:hidden sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-cream-200 px-4 py-3 flex items-center justify-between shadow-sm">
+    <div class="flex items-center gap-2">
+      <span class="text-xl">🌸</span>
+      <div>
+        <h1 class="text-base font-bold font-serif text-charcoal-900 tracking-tight leading-none">Project PMOS</h1>
+        <span class="text-[10px] font-medium text-peach-600 uppercase tracking-wider">Holistic Wellness</span>
+      </div>
+    </div>
+    <div class="flex items-center gap-2">
+      <span id="mobile-streak-count" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-peach-100 text-peach-700">
+        🔥 1d streak
+      </span>
+      <button data-nav-target="settings" class="p-1.5 rounded-xl hover:bg-cream-100 text-charcoal-600">
+        <i data-lucide="settings" class="w-5 h-5"></i>
+      </button>
+    </div>
+  </header>
+
+  <div class="flex flex-1 w-full max-w-7xl mx-auto">
+    
+    <!-- ================================================== -->
+    <!-- DESKTOP LEFT SIDEBAR -->
+    <!-- ================================================== -->
+    <aside class="hidden md:flex flex-col w-64 lg:w-72 bg-white border-r border-cream-200 p-6 sticky top-0 h-screen justify-between z-30">
+      <div class="space-y-6">
+        <!-- Logo Brand -->
+        <div class="flex items-center gap-3 px-2">
+          <div class="w-10 h-10 rounded-2xl bg-blush flex items-center justify-center text-xl shadow-sm border border-blush-dark/50">
+            🌸
+          </div>
+          <div>
+            <h1 class="text-xl font-bold font-serif text-charcoal-900 tracking-tight">Project PMOS</h1>
+            <p class="text-[11px] font-semibold text-charcoal-400 uppercase tracking-wider">Women's Wellness</p>
+          </div>
+        </div>
+
+        <!-- Navigation Menu -->
+        <nav class="space-y-1.5 pt-2">
+          <button data-nav-target="dashboard" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-semibold transition-all bg-blush text-charcoal-900 shadow-sm">
+            <span class="text-base">🏠</span>
+            <span>Dashboard</span>
+          </button>
+
+          <button data-nav-target="nutrition" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium text-charcoal-600 hover:bg-cream-100 hover:text-charcoal-900 transition-all">
+            <span class="text-base">🥗</span>
+            <span>Nutrition</span>
+          </button>
+
+          <button data-nav-target="routines" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium text-charcoal-600 hover:bg-cream-100 hover:text-charcoal-900 transition-all">
+            <span class="text-base">🧘</span>
+            <span>Routines</span>
+          </button>
+
+          <button data-nav-target="care" data-subtab-target="skin" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium text-charcoal-600 hover:bg-cream-100 hover:text-charcoal-900 transition-all">
+            <span class="text-base">✨</span>
+            <span>Personal Care</span>
+          </button>
+
+          <button data-nav-target="medication" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium text-charcoal-600 hover:bg-cream-100 hover:text-charcoal-900 transition-all">
+            <span class="text-base">💊</span>
+            <span>Medication</span>
+          </button>
+
+          <button data-nav-target="progress" class="sidebar-nav-btn w-full flex items-center gap-3.5 px-4 py-3 rounded-2xl text-sm font-medium text-charcoal-600 hover:bg-cream-100 hover:text-charcoal-900 transition-all">
+            <span class="text-base">📊</span>
+            <span>My Journey</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Sidebar Bottom Profile / Settings Widget -->
+      <div class="space-y-4 pt-4 border-t border-cream-200">
+        <!-- Daily Hormone Cycle Badge -->
+        <div class="bg-blush/70 border border-blush-dark/60 p-3.5 rounded-2xl">
+          <div class="flex items-center justify-between text-xs mb-1">
+            <span class="font-bold text-charcoal-800 flex items-center gap-1.5">
+              <span>📅</span> <span class="cycle-day-indicator">Cycle Day 1 • FOLLICULAR</span>
+            </span>
+          </div>
+          <p class="text-[11px] text-charcoal-600 leading-snug">Energy is building. Ideal for nutrition and daily habits.</p>
+        </div>
+
+        <button data-nav-target="settings" class="sidebar-nav-btn w-full flex items-center justify-between px-3 py-2 rounded-xl text-xs font-semibold text-charcoal-600 hover:bg-cream-100 transition-colors">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-lavender-200 flex items-center justify-center text-xs font-bold text-lavender-700 user-initial-display">
+              N
+            </div>
+            <div class="text-left">
+              <p class="text-xs font-bold text-charcoal-800 leading-tight user-name-display">Nishita</p>
+              <p class="text-[10px] text-charcoal-400">Settings & Profile</p>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-charcoal-400"></i>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ================================================== -->
+    <!-- MAIN CONTENT AREA -->
+    <!-- ================================================== -->
+    <main class="flex-1 p-4 md:p-8 lg:p-10 pb-24 md:pb-12 max-w-5xl overflow-x-hidden">
+
+      <!-- ================================================== -->
+      <!-- 1. DASHBOARD SECTION -->
+      <!-- ================================================== -->
+      <section id="section-dashboard" class="app-section space-y-8">
+        
+        <!-- Header Greeting (Time Dynamic) -->
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cream-100 text-charcoal-600 text-xs font-semibold mb-2">
+              <i data-lucide="calendar" class="w-3.5 h-3.5 text-peach-500"></i>
+              <span class="dynamic-date">Sunday, Aug 16, 2026</span>
+            </div>
+            <h2 id="dashboard-greeting-title" class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Good evening, Nishita <span class="text-peach-500">✨</span></h2>
+            <p class="text-sm text-charcoal-600 mt-1">Here's your personalized wellness plan for today.</p>
+          </div>
+
+          <div class="flex items-center gap-3">
+            <div class="bg-white border border-blush-dark/50 px-4 py-2.5 rounded-2xl shadow-card flex items-center gap-3">
+              <span class="text-2xl">🔥</span>
+              <div>
+                <p class="text-[10px] font-bold uppercase tracking-wider text-charcoal-400">Consistency</p>
+                <p id="dashboard-streak-count" class="text-sm font-extrabold text-charcoal-900">Day 1 Streak</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Large Progress Card (Starts at 0% for new user) -->
+        <div class="bg-gradient-to-br from-white via-cream-50 to-blush/40 border border-blush-dark/60 rounded-3xl p-6 md:p-8 shadow-card relative overflow-hidden">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
+            <div class="space-y-2 max-w-md">
+              <div class="inline-flex items-center gap-1.5 px-3 py-0.5 rounded-full text-xs font-bold bg-peach-100 text-peach-700 tracking-wide">
+                TODAY'S PROGRESS
+              </div>
+              <h3 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Start your daily flow 🌱</h3>
+              <p class="text-xs md:text-sm text-charcoal-600 leading-relaxed">
+                Consistency over perfection. Check off your daily nourishing habits below to track your 25% incremental progress.
+              </p>
+            </div>
+
+            <div class="bg-white p-5 rounded-2xl border border-blush-dark/50 shadow-soft text-center md:min-w-[200px]">
+              <div class="text-3xl md:text-4xl font-extrabold text-peach-600 font-serif" id="dash-progress-percent">0%</div>
+              <div class="text-xs font-bold text-charcoal-600 mt-1" id="dash-progress-count">0 of 4 completed</div>
+              <div class="w-full bg-cream-200 h-2.5 rounded-full mt-3 overflow-hidden">
+                <div id="dash-progress-bar" class="bg-gradient-to-r from-peach-500 to-peach-600 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Daily Checklist Items (Unchecked by default) -->
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-6 pt-6 border-t border-cream-200/80">
+            
+            <label class="dashboard-checklist-item flex items-center gap-2.5 p-3 rounded-2xl bg-white/80 border border-cream-200 hover:border-peach-300 cursor-pointer transition-all" data-checklist-key="move">
+              <input type="checkbox" class="w-4 h-4 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+              <span class="text-xs font-bold text-charcoal-800">🧘 Move</span>
+            </label>
+
+            <label class="dashboard-checklist-item flex items-center gap-2.5 p-3 rounded-2xl bg-white/80 border border-cream-200 hover:border-peach-300 cursor-pointer transition-all" data-checklist-key="nourish">
+              <input type="checkbox" class="w-4 h-4 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+              <span class="text-xs font-bold text-charcoal-800">🥗 Nourish</span>
+            </label>
+
+            <label class="dashboard-checklist-item flex items-center gap-2.5 p-3 rounded-2xl bg-white/80 border border-cream-200 hover:border-peach-300 cursor-pointer transition-all" data-checklist-key="selfcare">
+              <input type="checkbox" class="w-4 h-4 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+              <span class="text-xs font-bold text-charcoal-800">✨ Self-Care</span>
+            </label>
+
+            <label class="dashboard-checklist-item flex items-center gap-2.5 p-3 rounded-2xl bg-white/80 border border-cream-200 hover:border-peach-300 cursor-pointer transition-all" data-checklist-key="mood">
+              <input type="checkbox" class="w-4 h-4 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+              <span class="text-xs font-bold text-charcoal-800">🌸 Check-in</span>
+            </label>
+
+          </div>
+        </div>
+
+        <!-- Today's Plan Cards Grid (4 Cards) -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="text-lg font-bold font-serif text-charcoal-900">Today's Curated Plan</h3>
+            <span class="text-xs text-charcoal-400 font-medium cycle-day-indicator">Cycle Day 1 • FOLLICULAR</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+
+            <!-- CARD 1: MOVE -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-peach-100 text-peach-600 flex items-center justify-center font-bold text-base">
+                      🧘
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-extrabold uppercase tracking-wider text-peach-600">MOVE</span>
+                      <h4 class="text-base font-bold text-charcoal-900 leading-tight">Strength & Core Flow</h4>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-cream-100 text-charcoal-700">Day 1</span>
+                </div>
+                <p class="text-xs text-charcoal-600 mt-2 leading-relaxed">
+                  8 functional bodyweight movements designed to tone glutes, stabilize pelvis, and boost insulin sensitivity.
+                </p>
+                <div class="flex items-center gap-3 mt-4 text-xs font-medium text-charcoal-500">
+                  <span class="flex items-center gap-1"><i data-lucide="activity" class="w-3.5 h-3.5 text-peach-500"></i> 8 exercises</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-peach-500"></i> 25 mins</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-cream-200">
+                <button id="plan-move-btn" class="w-full py-2.5 px-4 rounded-xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 group-hover:scale-[1.01]">
+                  <span>Start Routine</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD 2: NOURISH -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-base">
+                      🥗
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-extrabold uppercase tracking-wider text-emerald-700">NOURISH</span>
+                      <h4 class="text-base font-bold text-charcoal-900 leading-tight">Moong Dal Chilla</h4>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200">Veg • 280 kcal</span>
+                </div>
+                <p class="text-xs text-charcoal-600 mt-2 leading-relaxed">
+                  High-protein yellow lentil crepe stuffed with grated paneer and herbs. Gentle on digestion, stabilizing for morning glucose.
+                </p>
+                <div class="flex items-center gap-3 mt-4 text-xs font-medium text-charcoal-500">
+                  <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-600"></i> 20 min prep</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1"><i data-lucide="zap" class="w-3.5 h-3.5 text-emerald-600"></i> 14g Protein</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-cream-200">
+                <button id="plan-recipe-btn" class="w-full py-2.5 px-4 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 group-hover:scale-[1.01]">
+                  <span>View Recipe</span>
+                  <i data-lucide="book-open" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD 3: SELF-CARE -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card hover:shadow-hover transition-all flex flex-col justify-between group">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-lavender-100 text-lavender-700 flex items-center justify-center font-bold text-base">
+                      ✨
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-extrabold uppercase tracking-wider text-lavender-700">SELF-CARE</span>
+                      <h4 class="text-base font-bold text-charcoal-900 leading-tight">Morning Skin & Scalp Ritual</h4>
+                    </div>
+                  </div>
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-lavender-50 text-lavender-700">Hydration</span>
+                </div>
+                <p class="text-xs text-charcoal-600 mt-2 leading-relaxed">
+                  Gentle botanical cleanse, barrier hydration mist, sunscreen, followed by 2 minutes of scalp micro-stimulation.
+                </p>
+                <div class="flex items-center gap-3 mt-4 text-xs font-medium text-charcoal-500">
+                  <span class="flex items-center gap-1"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-lavender-500"></i> 3 Steps AM</span>
+                  <span>•</span>
+                  <span class="flex items-center gap-1"><i data-lucide="heart" class="w-3.5 h-3.5 text-lavender-500"></i> Barrier Friendly</span>
+                </div>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-cream-200">
+                <button id="plan-selfcare-btn" class="w-full py-2.5 px-4 rounded-xl bg-lavender-700 hover:bg-lavender-800 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2 group-hover:scale-[1.01]">
+                  <span>View Routine</span>
+                  <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- CARD 4: CHECK-IN (MOOD) -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card hover:shadow-hover transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between mb-3">
+                  <div class="flex items-center gap-2.5">
+                    <div class="w-9 h-9 rounded-xl bg-blush text-peach-600 flex items-center justify-center font-bold text-base">
+                      🌸
+                    </div>
+                    <div>
+                      <span class="text-[10px] font-extrabold uppercase tracking-wider text-peach-600">CHECK-IN</span>
+                      <h4 class="text-base font-bold text-charcoal-900 leading-tight">How are you feeling?</h4>
+                    </div>
+                  </div>
+                  <span class="text-xs text-charcoal-400 font-medium">Daily Reflection</span>
+                </div>
+                
+                <p class="text-xs text-charcoal-600 mt-2">
+                  Tune in with your body. Select your mood for personalized calming suggestions.
+                </p>
+
+                <!-- 5 Clickable Mood Buttons -->
+                <div class="grid grid-cols-5 gap-2 mt-4 text-center">
+                  <button data-mood="great" class="dashboard-mood-btn p-2 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                    <span class="text-xl">😊</span>
+                    <span class="text-[10px] font-bold text-charcoal-700 mt-1">Great</span>
+                  </button>
+                  <button data-mood="good" class="dashboard-mood-btn p-2 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                    <span class="text-xl">🙂</span>
+                    <span class="text-[10px] font-bold text-charcoal-700 mt-1">Good</span>
+                  </button>
+                  <button data-mood="okay" class="dashboard-mood-btn p-2 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                    <span class="text-xl">😐</span>
+                    <span class="text-[10px] font-bold text-charcoal-700 mt-1">Okay</span>
+                  </button>
+                  <button data-mood="low" class="dashboard-mood-btn p-2 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                    <span class="text-xl">😔</span>
+                    <span class="text-[10px] font-bold text-charcoal-700 mt-1">Low</span>
+                  </button>
+                  <button data-mood="stressed" class="dashboard-mood-btn p-2 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                    <span class="text-xl">😣</span>
+                    <span class="text-[10px] font-bold text-charcoal-700 mt-1">Stressed</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="mt-4 pt-3 border-t border-cream-200">
+                <div id="dashboard-mood-msg" class="text-xs font-semibold text-sage-600 flex items-center justify-between hidden">
+                  <span class="inline-flex items-center gap-1.5"><i data-lucide="check-circle" class="w-3.5 h-3.5"></i> Thanks for checking in 🌷</span>
+                  <button data-nav-target="care" data-subtab-target="mood" class="text-[11px] font-bold text-peach-600 hover:underline">Mood toolkit →</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- QUICK ACTIONS BAR -->
+        <div>
+          <h3 class="text-base font-bold font-serif text-charcoal-900 mb-3">Quick Actions</h3>
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3">
+            
+            <button data-quick-action="start-routine" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-peach-50 text-peach-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="play" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">Start Routine</span>
+            </button>
+
+            <button data-quick-action="view-meals" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="utensils" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">View Meals</span>
+            </button>
+
+            <button data-quick-action="self-care" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-lavender-100 text-lavender-700 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="sparkles" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">Self Care</span>
+            </button>
+
+            <button data-quick-action="mood-checkin" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="smile" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">Mood Check-in</span>
+            </button>
+
+            <button data-quick-action="med-tracker" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-amber-50 text-amber-600 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="pill" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">Medication</span>
+            </button>
+
+            <button data-quick-action="my-progress" class="p-4 rounded-2xl bg-white border border-blush-dark/40 shadow-sm hover:shadow-card hover:border-peach-300 transition-all text-center group">
+              <div class="w-10 h-10 mx-auto rounded-2xl bg-mauve-100 text-mauve-800 flex items-center justify-center group-hover:scale-110 transition-transform">
+                <i data-lucide="trending-up" class="w-5 h-5"></i>
+              </div>
+              <span class="block text-xs font-bold text-charcoal-900 mt-2">My Journey</span>
+            </button>
+
+          </div>
+        </div>
+
+        <!-- DYNAMIC PROGRESS SNAPSHOT (Live 0% to 100% calculation) -->
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <h3 class="text-base font-bold font-serif text-charcoal-900">Progress Snapshot</h3>
+              <p class="text-xs text-charcoal-500 mt-0.5">Overall adherence across lifestyle pillars</p>
+            </div>
+            <button data-nav-target="progress" class="text-xs font-bold text-peach-600 hover:text-peach-700 flex items-center gap-1">
+              <span>View Full Analytics</span>
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Movement -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-charcoal-700 mb-1.5">
+                <span class="flex items-center gap-2"><span>🏃</span> Movement (Daily Routine)</span>
+                <span id="snapshot-move-val" class="font-bold text-charcoal-900">0%</span>
+              </div>
+              <div class="w-full bg-cream-200 h-2 rounded-full overflow-hidden">
+                <div id="snapshot-move-bar" class="bg-peach-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Nutrition -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-charcoal-700 mb-1.5">
+                <span class="flex items-center gap-2"><span>🥗</span> Nutrition (Clean Indian Meals)</span>
+                <span id="snapshot-nourish-val" class="font-bold text-charcoal-900">0%</span>
+              </div>
+              <div class="w-full bg-cream-200 h-2 rounded-full overflow-hidden">
+                <div id="snapshot-nourish-bar" class="bg-emerald-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Self Care -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-charcoal-700 mb-1.5">
+                <span class="flex items-center gap-2"><span>✨</span> Self Care (Skin & Hair Routine)</span>
+                <span id="snapshot-selfcare-val" class="font-bold text-charcoal-900">0%</span>
+              </div>
+              <div class="w-full bg-cream-200 h-2 rounded-full overflow-hidden">
+                <div id="snapshot-selfcare-bar" class="bg-lavender-700 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- Mood Check-ins -->
+            <div>
+              <div class="flex justify-between text-xs font-semibold text-charcoal-700 mb-1.5">
+                <span class="flex items-center gap-2"><span>🌸</span> Mood Support & Check-ins</span>
+                <span id="snapshot-mood-val" class="font-bold text-charcoal-900">0%</span>
+              </div>
+              <div class="w-full bg-cream-200 h-2 rounded-full overflow-hidden">
+                <div id="snapshot-mood-bar" class="bg-mauve-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 2. NUTRITION SECTION -->
+      <!-- ================================================== -->
+      <section id="section-nutrition" class="app-section hidden space-y-6">
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Your meals, your way.</h2>
+            <p class="text-sm text-charcoal-600 mt-1">Wholesome, hormone-balancing Indian recipes crafted with love & science.</p>
+          </div>
+          
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-semibold text-charcoal-400">Dietary Filter:</span>
+          </div>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-2 pb-2">
+          <button data-diet-filter="all" class="nutrition-filter-btn px-4 py-2 rounded-2xl text-xs font-bold transition-all bg-peach-500 text-white shadow-sm">
+            All Recipes
+          </button>
+          <button data-diet-filter="veg" class="nutrition-filter-btn px-4 py-2 rounded-2xl text-xs font-semibold transition-all bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200">
+            🟢 Vegetarian
+          </button>
+          <button data-diet-filter="egg" class="nutrition-filter-btn px-4 py-2 rounded-2xl text-xs font-semibold transition-all bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200">
+            🟡 Eggetarian
+          </button>
+          <button data-diet-filter="nonveg" class="nutrition-filter-btn px-4 py-2 rounded-2xl text-xs font-semibold transition-all bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200">
+            🔴 Non-Vegetarian
+          </button>
+        </div>
+
+        <div class="flex items-center gap-6 border-b border-cream-200 pb-1 text-sm">
+          <button data-meal-filter="all" class="mealtime-filter-btn pb-3 text-peach-600 font-bold border-b-2 border-peach-500 transition-colors">
+            All Times
+          </button>
+          <button data-meal-filter="breakfast" class="mealtime-filter-btn pb-3 text-charcoal-600 hover:text-charcoal-900 transition-colors">
+            🌅 Breakfast
+          </button>
+          <button data-meal-filter="lunch" class="mealtime-filter-btn pb-3 text-charcoal-600 hover:text-charcoal-900 transition-colors">
+            ☀️ Lunch
+          </button>
+          <button data-meal-filter="evening" class="mealtime-filter-btn pb-3 text-charcoal-600 hover:text-charcoal-900 transition-colors">
+            ☕ Evening
+          </button>
+          <button data-meal-filter="dinner" class="mealtime-filter-btn pb-3 text-charcoal-600 hover:text-charcoal-900 transition-colors">
+            🌙 Dinner
+          </button>
+        </div>
+
+        <div id="nutrition-recipes-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <!-- Populated by script.js -->
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 3. ROUTINES SECTION (YOGA & EXERCISE) -->
+      <!-- ================================================== -->
+      <section id="section-routines" class="app-section hidden space-y-6">
+        
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Build your routine, one day at a time. 🌱</h2>
+            <p class="text-sm text-charcoal-600 mt-1" id="routine-count-subhead">🏃 Exercise • Day 1 (4 curated exercises)</p>
+          </div>
+
+          <div class="inline-flex p-1.5 rounded-2xl bg-cream-200/70 border border-cream-300">
+            <button id="tab-routine-exercise" class="px-5 py-2 rounded-xl text-xs font-bold bg-white text-charcoal-900 shadow-sm transition-all">
+              🏃 Exercise
+            </button>
+            <button id="tab-routine-yoga" class="px-5 py-2 rounded-xl text-xs font-semibold text-charcoal-500 hover:text-charcoal-900 transition-all">
+              🧘 Yoga
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-5 border border-blush-dark/40 shadow-card">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-bold text-charcoal-500 uppercase tracking-wider">Workout Progression Schedule</span>
+            <span class="text-xs text-peach-600 font-semibold flex items-center gap-1"><i data-lucide="lock" class="w-3.5 h-3.5"></i> Daily Unlocking active</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+            <button data-day="1" class="routine-day-pill text-left p-3.5 rounded-2xl bg-blush border border-peach-300 ring-2 ring-peach-500 transition-all group shadow-sm">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-extrabold text-peach-700">DAY 1</span>
+                <span class="text-xs font-bold text-peach-600">🔓 Active</span>
+              </div>
+              <p class="text-xs font-bold text-charcoal-900 mt-1">Foundation</p>
+              <p class="text-[11px] text-charcoal-600">Routine ready</p>
+            </button>
+
+            <button data-day="2" class="routine-day-pill text-left p-3.5 rounded-2xl bg-cream-100 border border-cream-200 opacity-80 hover:opacity-100 transition-all cursor-not-allowed">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-charcoal-400">DAY 2</span>
+                <span class="text-xs">🔒</span>
+              </div>
+              <p class="text-xs font-bold text-charcoal-600 mt-1">Strength & Mobility</p>
+              <p class="text-[10px] text-charcoal-400 leading-tight">Complete Day 1 to unlock</p>
+            </button>
+
+            <button data-day="3" class="routine-day-pill text-left p-3.5 rounded-2xl bg-cream-100 border border-cream-200 opacity-80 hover:opacity-100 transition-all cursor-not-allowed">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-charcoal-400">DAY 3</span>
+                <span class="text-xs">🔒</span>
+              </div>
+              <p class="text-xs font-bold text-charcoal-600 mt-1">Endurance Build</p>
+              <p class="text-[10px] text-charcoal-400 leading-tight">Complete Day 2 to unlock</p>
+            </button>
+
+            <button data-day="4" class="routine-day-pill text-left p-3.5 rounded-2xl bg-cream-100 border border-cream-200 opacity-80 hover:opacity-100 transition-all cursor-not-allowed">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-charcoal-400">DAY 4</span>
+                <span class="text-xs">🔒</span>
+              </div>
+              <p class="text-xs font-bold text-charcoal-600 mt-1">Full Power & Tone</p>
+              <p class="text-[10px] text-charcoal-400 leading-tight">Complete Day 3 to unlock</p>
+            </button>
+          </div>
+        </div>
+
+        <div class="bg-cream-100 p-4 rounded-2xl border border-cream-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2">
+            <span class="text-lg">🔥</span>
+            <div>
+              <p class="text-xs font-bold text-charcoal-900">Day 1 Workout Completion</p>
+              <p class="text-[11px] text-charcoal-500" id="routine-progress-text">0 / 4 completed (0%)</p>
+            </div>
+          </div>
+          <div class="w-full sm:w-64 bg-cream-300/80 h-2.5 rounded-full overflow-hidden">
+            <div id="routine-progress-bar" class="bg-peach-500 h-full rounded-full transition-all duration-500" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <div id="routine-cards-container" class="space-y-3.5">
+          <!-- Populated by script.js -->
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 4. PERSONAL CARE SECTION -->
+      <!-- ================================================== -->
+      <section id="section-care" class="app-section hidden space-y-6">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Personal Care & Rhythm ✨</h2>
+          <p class="text-sm text-charcoal-600 mt-1">Tailored skin, hair rituals, cycle tracking, and nervous system support.</p>
+        </div>
+
+        <!-- 4 Subnav Tabs -->
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button data-care-tab="skin" class="care-subnav-btn p-4 rounded-2xl text-left bg-peach-500 text-white font-bold shadow-sm transition-all">
+            <div class="text-2xl mb-1">✨</div>
+            <h4 class="text-sm font-bold">Skin Care</h4>
+            <p class="text-[11px] opacity-90">Custom protocol</p>
+          </button>
+
+          <button data-care-tab="hair" class="care-subnav-btn p-4 rounded-2xl text-left bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200 transition-all">
+            <div class="text-2xl mb-1">💇</div>
+            <h4 class="text-sm font-bold text-charcoal-900">Hair Care</h4>
+            <p class="text-[11px] text-charcoal-400">Wash & non-wash</p>
+          </button>
+
+          <button data-care-tab="mood" class="care-subnav-btn p-4 rounded-2xl text-left bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200 transition-all">
+            <div class="text-2xl mb-1">🌸</div>
+            <h4 class="text-sm font-bold text-charcoal-900">Mood Support</h4>
+            <p class="text-[11px] text-charcoal-400">Breathing & calm</p>
+          </button>
+
+          <button data-care-tab="period" class="care-subnav-btn p-4 rounded-2xl text-left bg-white text-charcoal-700 hover:bg-cream-100 border border-cream-200 transition-all">
+            <div class="text-2xl mb-1">📅</div>
+            <h4 class="text-sm font-bold text-charcoal-900">Period Sync</h4>
+            <p class="text-[11px] text-charcoal-400 cycle-day-indicator">Cycle Day 1</p>
+          </button>
+        </div>
+
+        <!-- SUB-TAB 1: SKIN CARE -->
+        <div id="care-view-skin" class="care-view-pane space-y-6">
+          <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-6">
+            <div>
+              <span class="text-xs font-bold text-peach-600 uppercase tracking-wider">Skin Health Architecture</span>
+              <h3 class="text-xl font-bold font-serif text-charcoal-900 mt-1">Build your skin routine</h3>
+              <p class="text-xs text-charcoal-600 mt-1">Personalized step-by-step regimen aligned with your current skin profile.</p>
+            </div>
+
+            <!-- Question 1: Skin Type -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-3">
+                1. What's your skin type?
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button data-value="oily" class="skin-type-chip py-3 px-4 rounded-2xl border-peach-500 bg-peach-50 text-peach-700 font-bold ring-2 ring-peach-400 transition-all text-center">
+                  💧 Oily
+                </button>
+                <button data-value="dry" class="skin-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  🌾 Dry
+                </button>
+                <button data-value="combination" class="skin-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  ⚖️ Combination
+                </button>
+                <button data-value="normal" class="skin-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  🌸 Normal
+                </button>
+              </div>
+            </div>
+
+            <!-- Question 2: Focus -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-3">
+                2. What would you like to focus on?
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button data-value="breakouts" class="skin-focus-chip py-3 px-4 rounded-2xl border-peach-500 bg-peach-50 text-peach-700 font-bold ring-2 ring-peach-400 transition-all text-center">
+                  🔴 Breakouts & Congestion
+                </button>
+                <button data-value="dryness" class="skin-focus-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  ❄️ Dryness & Flaking
+                </button>
+                <button data-value="sensitivity" class="skin-focus-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  🌿 Sensitivity & Redness
+                </button>
+                <button data-value="uneven" class="skin-focus-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  ✨ Uneven appearance
+                </button>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button id="generate-skin-routine-btn" class="w-full md:w-auto px-8 py-3.5 rounded-2xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-soft transition-all flex items-center justify-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Create My Routine</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="skin-routine-result" class="space-y-6">
+            <!-- Dynamic Result populated by script.js -->
+          </div>
+        </div>
+
+        <!-- SUB-TAB 2: HAIR CARE -->
+        <div id="care-view-hair" class="care-view-pane hidden space-y-6">
+          <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-6">
+            <div>
+              <span class="text-xs font-bold text-peach-600 uppercase tracking-wider">Follicle & Scalp Wellness</span>
+              <h3 class="text-xl font-bold font-serif text-charcoal-900 mt-1">Build your hair routine</h3>
+              <p class="text-xs text-charcoal-600 mt-1">Indian botanical care combined with modern trichology principles.</p>
+            </div>
+
+            <!-- Hair Type -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-3">
+                Hair type:
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button data-value="straight" class="hair-type-chip py-3 px-4 rounded-2xl border-peach-500 bg-peach-50 text-peach-700 font-bold ring-2 ring-peach-400 transition-all text-center">
+                  Straight
+                </button>
+                <button data-value="wavy" class="hair-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  Wavy
+                </button>
+                <button data-value="curly" class="hair-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  Curly
+                </button>
+                <button data-value="coily" class="hair-type-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  Coily
+                </button>
+              </div>
+            </div>
+
+            <!-- Main Concern -->
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-3">
+                Main concern:
+              </label>
+              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                <button data-value="shedding" class="hair-concern-chip py-3 px-4 rounded-2xl border-peach-500 bg-peach-50 text-peach-700 font-bold ring-2 ring-peach-400 transition-all text-center">
+                  🌿 Hair shedding
+                </button>
+                <button data-value="dandruff" class="hair-concern-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  ❄️ Dandruff
+                </button>
+                <button data-value="dryness" class="hair-concern-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  💧 Dryness
+                </button>
+                <button data-value="frizz" class="hair-concern-chip py-3 px-4 rounded-2xl border border-cream-200 text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all text-center">
+                  ⚡ Frizz
+                </button>
+              </div>
+            </div>
+
+            <div class="pt-2">
+              <button id="generate-hair-routine-btn" class="w-full md:w-auto px-8 py-3.5 rounded-2xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-soft transition-all flex items-center justify-center gap-2">
+                <i data-lucide="sparkles" class="w-4 h-4"></i>
+                <span>Create My Routine</span>
+              </button>
+            </div>
+          </div>
+
+          <div id="hair-routine-result" class="space-y-6">
+            <!-- Dynamic Result populated by script.js -->
+          </div>
+        </div>
+
+        <!-- SUB-TAB 3: MOOD SUPPORT -->
+        <div id="care-view-mood" class="care-view-pane hidden space-y-6">
+          <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-6">
+            <div class="text-center max-w-lg mx-auto">
+              <span class="text-2xl">🌸</span>
+              <h3 class="text-xl font-bold font-serif text-charcoal-900 mt-1">How are you feeling today?</h3>
+              <p class="text-xs text-charcoal-600 mt-1">Your emotional wellness is central to your hormonal balance.</p>
+            </div>
+
+            <div class="grid grid-cols-5 gap-3 max-w-md mx-auto">
+              <button data-mood="great" class="care-mood-btn p-3 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                <span class="text-2xl">😊</span>
+                <span class="text-xs font-bold text-charcoal-800 mt-1">Great</span>
+              </button>
+              <button data-mood="good" class="care-mood-btn p-3 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                <span class="text-2xl">🙂</span>
+                <span class="text-xs font-bold text-charcoal-800 mt-1">Good</span>
+              </button>
+              <button data-mood="okay" class="care-mood-btn p-3 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                <span class="text-2xl">😐</span>
+                <span class="text-xs font-bold text-charcoal-800 mt-1">Okay</span>
+              </button>
+              <button data-mood="low" class="care-mood-btn p-3 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                <span class="text-2xl">😔</span>
+                <span class="text-xs font-bold text-charcoal-800 mt-1">Low</span>
+              </button>
+              <button data-mood="stressed" class="care-mood-btn p-3 rounded-2xl bg-cream-100 hover:bg-blush border border-cream-200 transition-all flex flex-col items-center">
+                <span class="text-2xl">😣</span>
+                <span class="text-xs font-bold text-charcoal-800 mt-1">Stressed</span>
+              </button>
+            </div>
+
+            <div id="care-mood-response" class="max-w-md mx-auto hidden">
+              <div class="bg-blush/80 border border-blush-dark p-4 rounded-2xl flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="text-2xl">🌷</span>
+                  <div>
+                    <p class="text-xs font-bold text-charcoal-900">Thanks for checking in 🌷</p>
+                    <p class="text-[11px] text-charcoal-600 mt-0.5">Here are soothing practices curated for your nervous system today:</p>
+                  </div>
+                </div>
+                <span class="text-[11px] font-semibold text-sage-600 bg-white px-2.5 py-1 rounded-full border border-sage-200">Logged ✓</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <!-- Guided Breathing -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card flex flex-col justify-between items-center text-center">
+              <div class="w-full">
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-peach-600 uppercase tracking-wider">Nervous System Reset</span>
+                  <span class="text-[11px] text-charcoal-400 font-medium">4-7-8 Pranayama</span>
+                </div>
+                <h4 class="text-base font-bold font-serif text-charcoal-900">Guided Breathing</h4>
+              </div>
+
+              <div class="my-6 relative flex items-center justify-center">
+                <div id="breathing-guide-circle" class="w-36 h-36 rounded-full bg-lavender-100 flex items-center justify-center text-center p-4 transition-transform duration-700 shadow-inner">
+                  <span class="text-2xl">🌬️</span>
+                </div>
+              </div>
+
+              <p id="breathing-guide-phase" class="text-xs font-bold text-charcoal-700 min-h-[20px]">
+                Click Start to Begin (4-7-8 Breathing)
+              </p>
+
+              <button id="breathing-guide-toggle" class="mt-4 w-full py-2.5 px-4 rounded-xl bg-lavender-700 hover:bg-lavender-800 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2">
+                <i data-lucide="play" class="w-4 h-4"></i>
+                <span>Start Breathing Guide</span>
+              </button>
+            </div>
+
+            <!-- Mindful Journaling -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card flex flex-col justify-between space-y-4">
+              <div>
+                <div class="flex items-center justify-between mb-2">
+                  <span class="text-xs font-bold text-mauve-500 uppercase tracking-wider">Mindful Journaling</span>
+                  <span class="text-[11px] text-charcoal-400 font-medium">Today's Prompt</span>
+                </div>
+                <h4 class="text-base font-bold font-serif text-charcoal-900">What are 3 things bringing you peace today?</h4>
+              </div>
+
+              <div>
+                <textarea id="journal-note-input" rows="3" placeholder="Write your thoughts here..." class="w-full p-3.5 rounded-2xl bg-cream-50 border border-cream-200 text-xs text-charcoal-800 focus:outline-none focus:ring-2 focus:ring-peach-400 resize-none"></textarea>
+                <div class="flex justify-end mt-2">
+                  <button id="save-journal-btn" class="px-4 py-2 rounded-xl bg-peach-500 hover:bg-peach-600 text-white text-xs font-bold transition-colors flex items-center gap-1.5 shadow-sm">
+                    <i data-lucide="book-open" class="w-3.5 h-3.5"></i>
+                    <span>Save Note</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="border-t border-cream-200 pt-3">
+                <h5 class="text-[11px] font-bold uppercase text-charcoal-400 mb-2">Recent Reflections</h5>
+                <div id="journal-entries-list" class="space-y-2 max-h-32 overflow-y-auto">
+                  <!-- Populated by script.js -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div class="bg-white p-4 rounded-2xl border border-blush-dark/40 shadow-sm flex items-start gap-3">
+              <span class="text-xl">🚶</span>
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Short Walk</h5>
+                <p class="text-[11px] text-charcoal-500 mt-0.5">15 minutes in morning natural sunlight to boost dopamine.</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-blush-dark/40 shadow-sm flex items-start gap-3">
+              <span class="text-xl">🧘</span>
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Relaxation</h5>
+                <p class="text-[11px] text-charcoal-500 mt-0.5">5 minutes progressive body scan and lavender aroma.</p>
+              </div>
+            </div>
+
+            <div class="bg-white p-4 rounded-2xl border border-blush-dark/40 shadow-sm flex items-start gap-3">
+              <span class="text-xl">💬</span>
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Talk to someone</h5>
+                <p class="text-[11px] text-charcoal-500 mt-0.5">Call or message someone you trust for connection.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- SUB-TAB 4: PERIOD TRACKER -->
+        <div id="care-view-period" class="care-view-pane hidden space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-4">
+              <div class="flex items-center justify-between">
+                <div>
+                  <h3 class="text-lg font-bold font-serif text-charcoal-900">Cycle Overview</h3>
+                  <p class="text-xs text-charcoal-500">Predicted Phase Schedule</p>
+                </div>
+                <div class="flex items-center gap-3 text-xs">
+                  <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-rose-400"></span> Period</span>
+                  <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-peach-500"></span> Ovulation</span>
+                  <span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-lavender-500"></span> Est. Next</span>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-7 text-center text-xs font-bold text-charcoal-400 border-b border-cream-200 pb-2">
+                <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+              </div>
+
+              <div class="grid grid-cols-7 gap-1.5 text-center text-xs">
+                <div></div><div></div><div></div><div></div><div></div><div></div>
+                <div class="p-2 rounded-xl bg-rose-100 text-rose-700 font-bold">1</div>
+                <div class="p-2 rounded-xl bg-rose-100 text-rose-700 font-bold">2</div>
+                <div class="p-2 rounded-xl bg-rose-100 text-rose-700 font-bold">3</div>
+                <div class="p-2 rounded-xl bg-rose-100 text-rose-700 font-bold">4</div>
+                <div class="p-2 rounded-xl bg-rose-100 text-rose-700 font-bold">5</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">6</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">7</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">8</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">9</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">10</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">11</div>
+                <div class="p-2 rounded-xl bg-peach-100 text-peach-700 font-semibold">12</div>
+                <div class="p-2 rounded-xl bg-peach-100 text-peach-700 font-semibold">13</div>
+                <div class="p-2 rounded-xl bg-peach-500 text-white font-extrabold shadow-sm ring-2 ring-peach-300">14</div>
+                <div class="p-2 rounded-xl bg-peach-100 text-peach-700 font-semibold">15</div>
+                <div class="p-2 rounded-xl bg-peach-100 text-peach-700 font-semibold">16</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">17</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">18</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">19</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">20</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">21</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">22</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">23</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">24</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">25</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">26</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">27</div>
+                <div class="p-2 rounded-xl hover:bg-cream-100 text-charcoal-700">28</div>
+                <div class="p-2 rounded-xl bg-lavender-200 text-lavender-800 font-extrabold border border-lavender-400">29</div>
+                <div class="p-2 rounded-xl bg-lavender-100 text-lavender-700 font-medium">30</div>
+                <div class="p-2 rounded-xl bg-lavender-100 text-lavender-700 font-medium">31</div>
+              </div>
+            </div>
+
+            <!-- Cycle Status Card -->
+            <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card flex flex-col justify-between space-y-4">
+              <div class="space-y-4">
+                <div class="p-4 rounded-2xl bg-blush/80 border border-blush-dark/60">
+                  <p class="text-[10px] font-extrabold uppercase tracking-wider text-peach-600">Current Status</p>
+                  <h4 class="text-xl font-bold font-serif text-charcoal-900 mt-1 cycle-day-indicator">Cycle Day: 1</h4>
+                  <p class="text-xs text-charcoal-600 mt-1">Follicular Phase</p>
+                </div>
+
+                <div class="p-4 rounded-2xl bg-lavender-50 border border-lavender-200">
+                  <p class="text-[10px] font-extrabold uppercase tracking-wider text-lavender-700">Forecast</p>
+                  <h4 class="text-base font-bold text-charcoal-900 mt-1">Estimated next period:</h4>
+                  <p id="predicted-period-date" class="text-sm font-extrabold text-lavender-700 mt-0.5">Calculating...</p>
+                  <p class="text-[11px] text-charcoal-500 mt-1">Adjusted for your PCOS / delay pattern</p>
+                </div>
+              </div>
+
+              <div class="p-3 bg-cream-50 rounded-xl text-[11px] text-charcoal-500">
+                ⚠️ <em>Estimated forecast based on typical rhythm. Not intended for medical contraception.</em>
+              </div>
+            </div>
+          </div>
+
+          <!-- Symptom Logger -->
+          <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card space-y-3">
+            <h4 class="text-sm font-bold font-serif text-charcoal-900">Log Today's Symptoms</h4>
+            <p class="text-xs text-charcoal-500">Tap to record how your body feels today:</p>
+            
+            <div class="flex flex-wrap gap-2.5 pt-1">
+              <button data-symptom="cramps" class="period-symptom-btn px-4 py-2 rounded-2xl border border-cream-200 bg-white text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all flex items-center gap-1.5">
+                <span>🩸 Cramps</span>
+              </button>
+              <button data-symptom="bloating" class="period-symptom-btn px-4 py-2 rounded-2xl border border-cream-200 bg-white text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all flex items-center gap-1.5">
+                <span>🎈 Bloating</span>
+              </button>
+              <button data-symptom="fatigue" class="period-symptom-btn px-4 py-2 rounded-2xl border border-cream-200 bg-white text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all flex items-center gap-1.5">
+                <span>😴 Fatigue</span>
+              </button>
+              <button data-symptom="headache" class="period-symptom-btn px-4 py-2 rounded-2xl border border-cream-200 bg-white text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all flex items-center gap-1.5">
+                <span>🤕 Headache</span>
+              </button>
+              <button data-symptom="mood-changes" class="period-symptom-btn px-4 py-2 rounded-2xl border border-cream-200 bg-white text-xs font-semibold text-charcoal-700 hover:bg-cream-50 transition-all flex items-center gap-1.5">
+                <span>🌊 Mood changes</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 5. MEDICATION & SUPPLEMENT TRACKER SECTION -->
+      <!-- ================================================== -->
+      <section id="section-medication" class="app-section hidden space-y-6">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Daily Medication & Supplement Tracker 💊</h2>
+          <p class="text-sm text-charcoal-600 mt-1">Stay consistent with your vitamins, minerals, and doctor-prescribed regimens.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-3xl p-6 border border-blush-dark/40 shadow-card space-y-4">
+            <h3 class="text-base font-bold font-serif text-charcoal-900">Add Reminder</h3>
+
+            <div>
+              <label class="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">Medicine / Supplement Name</label>
+              <input id="med-name-input" type="text" placeholder="e.g. Myo-Inositol, Iron, Vitamin D3" class="w-full p-3 rounded-xl bg-cream-50 border border-cream-200 text-xs focus:ring-2 focus:ring-peach-400 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">Reminder Time</label>
+              <input id="med-time-input" type="text" placeholder="e.g. 08:30 AM" class="w-full p-3 rounded-xl bg-cream-50 border border-cream-200 text-xs focus:ring-2 focus:ring-peach-400 focus:outline-none" />
+            </div>
+
+            <div>
+              <label class="block text-xs font-bold text-charcoal-700 uppercase tracking-wider mb-1.5">Timing Tag</label>
+              <select id="med-tag-input" class="w-full p-3 rounded-xl bg-cream-50 border border-cream-200 text-xs focus:ring-2 focus:ring-peach-400 focus:outline-none">
+                <option value="With Breakfast">With Breakfast</option>
+                <option value="Post Lunch">Post Lunch</option>
+                <option value="Evening with Snack">Evening with Snack</option>
+                <option value="Before Bed">Before Bed</option>
+                <option value="Empty Stomach">Empty Stomach</option>
+              </select>
+            </div>
+
+            <button id="add-medicine-btn" class="w-full py-3 rounded-xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-sm transition-all flex items-center justify-center gap-2">
+              <i data-lucide="plus" class="w-4 h-4"></i>
+              <span>Add Medicine</span>
+            </button>
+
+            <p class="text-[10px] text-charcoal-400 italic text-center">
+              *Prototype tracker only. Does not prescribe dosage or medical treatment.
+            </p>
+          </div>
+
+          <div class="md:col-span-2 bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-base font-bold font-serif text-charcoal-900">Today's Schedule</h3>
+              <span class="text-xs text-charcoal-400 font-medium">Click to mark taken</span>
+            </div>
+
+            <div id="medication-list-container" class="space-y-3">
+              <!-- Populated by script.js -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 6. PROGRESS & JOURNEY SECTION -->
+      <!-- ================================================== -->
+      <section id="section-progress" class="app-section hidden space-y-6">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">My Transformation Journey 📊</h2>
+          <p class="text-sm text-charcoal-600 mt-1">Witness your holistic vitality, strength gains, and skin clarity evolve.</p>
+        </div>
+
+        <div class="bg-gradient-to-r from-blush via-cream-100 to-lavender-100 rounded-3xl p-6 border border-blush-dark/60 shadow-card flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🔥</span>
+            <div>
+              <h3 class="text-lg font-bold font-serif text-charcoal-900">Consistency Dashboard</h3>
+              <p class="text-xs text-charcoal-600">Track your daily habits and lifestyle milestones!</p>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="px-3 py-1 rounded-full bg-white text-peach-700 font-bold text-xs border border-peach-200 shadow-sm">
+              Personalized Plan
+            </span>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-6">
+          <div>
+            <span class="text-xs font-bold text-peach-600 uppercase tracking-wider">Visual Milestones</span>
+            <h3 class="text-xl font-bold font-serif text-charcoal-900 mt-1">MY JOURNEY</h3>
+            <p class="text-xs text-charcoal-600 mt-1">Upload private photos to view your visual progress (stored locally in browser).</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="border-2 border-dashed border-cream-300 rounded-3xl p-5 text-center flex flex-col items-center justify-between min-h-[300px] bg-cream-50 relative overflow-hidden group">
+              <div class="w-full">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-cream-200 text-charcoal-700">Before Photo (Day 1)</span>
+                  <span class="text-[11px] text-charcoal-400">Day 1</span>
+                </div>
+              </div>
+
+              <div id="placeholder-before-box" class="my-6">
+                <div class="w-20 h-20 mx-auto rounded-3xl bg-blush text-peach-500 flex items-center justify-center text-3xl shadow-sm mb-3">
+                  📷
+                </div>
+                <p class="text-xs font-bold text-charcoal-700">No before photo selected</p>
+                <p class="text-[11px] text-charcoal-400 mt-1">Tap below to choose an image from your computer</p>
+              </div>
+
+              <img id="preview-before-img" class="hidden w-full h-56 object-cover rounded-2xl shadow-sm my-2" alt="Before Photo" />
+
+              <div class="w-full mt-4">
+                <label for="upload-before-input" class="w-full py-2.5 px-4 rounded-xl bg-white border border-charcoal-200 text-charcoal-700 hover:bg-cream-100 font-bold text-xs shadow-sm cursor-pointer transition-all flex items-center justify-center gap-2">
+                  <i data-lucide="upload" class="w-4 h-4"></i>
+                  <span>Upload Before Photo</span>
+                </label>
+                <input id="upload-before-input" type="file" accept="image/*" class="hidden" />
+              </div>
+            </div>
+
+            <div class="border-2 border-dashed border-peach-300 rounded-3xl p-5 text-center flex flex-col items-center justify-between min-h-[300px] bg-blush/30 relative overflow-hidden group">
+              <div class="w-full">
+                <div class="flex items-center justify-between mb-3">
+                  <span class="px-3 py-1 rounded-full text-xs font-bold bg-peach-500 text-white">Current Glow Check</span>
+                  <span class="text-[11px] text-peach-700 font-semibold">Today</span>
+                </div>
+              </div>
+
+              <div id="placeholder-current-box" class="my-6">
+                <div class="w-20 h-20 mx-auto rounded-3xl bg-peach-100 text-peach-600 flex items-center justify-center text-3xl shadow-sm mb-3">
+                  ✨
+                </div>
+                <p class="text-xs font-bold text-charcoal-700">Upload today's glow check</p>
+                <p class="text-[11px] text-charcoal-400 mt-1">See your natural posture & skin changes</p>
+              </div>
+
+              <img id="preview-current-img" class="hidden w-full h-56 object-cover rounded-2xl shadow-sm my-2" alt="Current Photo" />
+
+              <div class="w-full mt-4">
+                <label for="upload-current-input" class="w-full py-2.5 px-4 rounded-xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-sm cursor-pointer transition-all flex items-center justify-center gap-2">
+                  <i data-lucide="upload" class="w-4 h-4"></i>
+                  <span>Upload Current Photo</span>
+                </label>
+                <input id="upload-current-input" type="file" accept="image/*" class="hidden" />
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- 7. SETTINGS & PROFILE SECTION -->
+      <!-- ================================================== -->
+      <section id="section-settings" class="app-section hidden space-y-6">
+        
+        <div>
+          <h2 class="text-2xl md:text-3xl font-bold font-serif text-charcoal-900">Settings & Preferences ⚙️</h2>
+          <p class="text-sm text-charcoal-600 mt-1">Configure your personal wellness parameters and prototype options.</p>
+        </div>
+
+        <div class="bg-white rounded-3xl p-6 md:p-8 border border-blush-dark/40 shadow-card space-y-6">
+          <div class="flex items-center gap-4 pb-6 border-b border-cream-200">
+            <div class="w-16 h-16 rounded-3xl bg-blush flex items-center justify-center text-2xl font-bold text-peach-600 border border-blush-dark/60 user-initial-display">
+              N
+            </div>
+            <div>
+              <h3 class="text-lg font-bold font-serif text-charcoal-900 user-name-display">Nishita</h3>
+              <p class="text-xs text-charcoal-500"><span id="settings-email-display">nishita@example.com</span> • Member since Aug 2026</p>
+              <span class="inline-block mt-1 px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-peach-100 text-peach-700">PCOS Sync Active</span>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cream-50 transition-colors">
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Daily Reminder Notifications</h5>
+                <p class="text-[11px] text-charcoal-500">Morning routine, hydration, and medication nudges</p>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cream-50 transition-colors">
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Cycle Sync Smart Adaptations</h5>
+                <p class="text-[11px] text-charcoal-500">Automatically adjust workout intensity by cycle phase</p>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+            </div>
+
+            <div class="flex items-center justify-between p-3 rounded-2xl hover:bg-cream-50 transition-colors">
+              <div>
+                <h5 class="text-xs font-bold text-charcoal-900">Indian Nutrition Preferred</h5>
+                <p class="text-[11px] text-charcoal-500">Default to regional balanced whole-food meal plans</p>
+              </div>
+              <input type="checkbox" checked class="w-5 h-5 rounded text-peach-500 focus:ring-peach-400 border-charcoal-300 custom-checkbox" />
+            </div>
+
+            <!-- Reset User Profile Button -->
+            <div class="pt-4 border-t border-cream-200">
+              <button onclick="resetUserProfile()" class="px-4 py-2.5 rounded-xl border border-rose-200 bg-rose-50 text-rose-700 hover:bg-rose-100 text-xs font-bold transition-colors flex items-center gap-2">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                <span>Reset User / Register as New User</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ================================================== -->
+      <!-- MEDICAL DISCLAIMER & FOOTER -->
+      <!-- ================================================== -->
+      <footer class="mt-12 pt-8 border-t border-cream-200 text-center space-y-3">
+        <div class="max-w-2xl mx-auto p-4 rounded-2xl bg-white/60 border border-cream-200 text-xs text-charcoal-500 leading-relaxed shadow-sm">
+          <span class="font-bold text-charcoal-700">Medical Disclaimer:</span> Project PMOS provides general wellness information and is not a substitute for professional medical advice, diagnosis, or treatment. Always seek the advice of your physician or qualified health provider.
+        </div>
+        <p class="text-[11px] text-charcoal-400">
+          🌸 Project PMOS • Built for Women's Daily Holistic Health
+        </p>
+      </footer>
+
+    </main>
+
+  </div>
+
+  <!-- ================================================== -->
+  <!-- MOBILE BOTTOM NAVIGATION BAR -->
+  <!-- ================================================== -->
+  <nav class="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-white/95 backdrop-blur-lg border-t border-cream-200 px-3 py-2 flex items-center justify-around shadow-lg">
+    <button data-nav-target="dashboard" class="mobile-nav-btn flex flex-col items-center gap-1 text-peach-600 font-bold transition-all">
+      <span class="text-lg">🏠</span>
+      <span class="text-[10px]">Home</span>
+    </button>
+
+    <button data-nav-target="nutrition" class="mobile-nav-btn flex flex-col items-center gap-1 text-charcoal-400 hover:text-charcoal-700 transition-all">
+      <span class="text-lg">🥗</span>
+      <span class="text-[10px]">Nutrition</span>
+    </button>
+
+    <button data-nav-target="routines" class="mobile-nav-btn flex flex-col items-center gap-1 text-charcoal-400 hover:text-charcoal-700 transition-all">
+      <span class="text-lg">🧘</span>
+      <span class="text-[10px]">Routines</span>
+    </button>
+
+    <button data-nav-target="care" data-subtab-target="skin" class="mobile-nav-btn flex flex-col items-center gap-1 text-charcoal-400 hover:text-charcoal-700 transition-all">
+      <span class="text-lg">✨</span>
+      <span class="text-[10px]">Care</span>
+    </button>
+
+    <button data-nav-target="medication" class="mobile-nav-btn flex flex-col items-center gap-1 text-charcoal-400 hover:text-charcoal-700 transition-all">
+      <span class="text-lg">💊</span>
+      <span class="text-[10px]">Meds</span>
+    </button>
+  </nav>
+
+  <!-- ================================================== -->
+  <!-- ONBOARDING / LOGIN GATEWAY MODAL -->
+  <!-- ================================================== -->
+  <div id="onboarding-modal" class="fixed inset-0 z-50 flex items-center justify-center bg-charcoal-900/75 backdrop-blur-md p-4 hidden">
+    <div class="bg-white w-full max-w-lg rounded-3xl p-6 md:p-8 shadow-2xl border border-blush-dark max-h-[90vh] overflow-y-auto space-y-6">
+      <div class="text-center space-y-2">
+        <span class="inline-block p-3 rounded-2xl bg-peach-100 text-peach-600 text-2xl">🌸</span>
+        <h2 class="text-2xl font-bold font-serif text-charcoal-900">Welcome to Project PMOS</h2>
+        <p class="text-xs text-charcoal-600">Personalized hormone wellness, cycle tracking, and daily rhythm syncing.</p>
+      </div>
+
+      <form id="onboarding-form" class="space-y-4 text-left">
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-1">Your Name</label>
+          <input type="text" id="user-name-input" required placeholder="e.g., Nishita" class="w-full px-4 py-2.5 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 focus:outline-none text-xs text-charcoal-800" />
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-charcoal-700 mb-1">Email Address</label>
+          <input type="email" id="user-email-input" required placeholder="name@example.com" class="w-full px-4 py-2.5 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 focus:outline-none text-xs text-charcoal-800" />
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2 border-t border-cream-200">
+          <div>
+            <label class="block text-xs font-bold text-charcoal-800 mb-1">Most Recent Period Date</label>
+            <input type="date" id="last-period-date" required class="w-full px-3 py-2 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 text-xs text-charcoal-800" />
+          </div>
+          <div>
+            <label class="block text-xs font-bold text-charcoal-800 mb-1">Previous Period Date (Prior Cycle)</label>
+            <input type="date" id="prev-period-date" required class="w-full px-3 py-2 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 text-xs text-charcoal-800" />
+          </div>
+        </div>
+
+        <div class="space-y-1.5 pt-2">
+          <label class="block text-xs font-bold text-charcoal-800">Typical Cycle Delay / Irregularity Pattern</label>
+          <select id="cycle-delay-select" class="w-full px-3 py-2 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 text-xs text-charcoal-800">
+            <option value="0">Regular (28–32 days)</option>
+            <option value="14">Mild Delay (35–45 days)</option>
+            <option value="30">1 Month Delay (45–60 days - Common in PCOS)</option>
+            <option value="60">2+ Months Delay (60–90 days - Oligomenorrhea)</option>
+          </select>
+        </div>
+
+        <div class="space-y-1.5">
+          <label class="block text-xs font-bold text-charcoal-800">Primary Wellness Goal</label>
+          <select id="primary-goal-select" class="w-full px-3 py-2 rounded-xl border border-cream-300 focus:ring-2 focus:ring-peach-400 text-xs text-charcoal-800">
+            <option value="insulin">Manage Insulin Resistance & Cravings</option>
+            <option value="acne">Clear Hormonal Cystic Acne</option>
+            <option value="regularity">Restore Period Regularity & Ovulation</option>
+            <option value="energy">Combat Fatigue & Cortisol Stress</option>
+          </select>
+        </div>
+
+        <button type="submit" class="w-full py-3 rounded-xl bg-peach-500 hover:bg-peach-600 text-white font-bold text-xs shadow-md transition-all flex items-center justify-center gap-2 mt-4">
+          <span>Enter My Dashboard</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- RECIPE & DIY MODAL -->
+  <!-- ================================================== -->
+  <div id="recipe-modal" class="fixed inset-0 z-50 bg-charcoal-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl border border-blush-dark/50 overflow-hidden transform transition-all animate-soft-pulse" id="recipe-modal-content">
+      <!-- Populated dynamically by script.js -->
+    </div>
+  </div>
+
+  <!-- ================================================== -->
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <!-- ================================================== -->
+  <div id="toast-container" class="fixed bottom-20 md:bottom-6 right-6 z-50 flex flex-col gap-2 max-w-sm pointer-events-none">
+    <!-- Populated by script.js -->
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
